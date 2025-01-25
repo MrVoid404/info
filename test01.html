@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одностраничный сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000; /* Черный фон для всего сайта */
+            color: #fff; /* Белый текст */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .section {
+            height: 70vh; /* Уменьшили высоту секций */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease; /* Плавная анимация */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2), 
+                         4px 4px 6px rgba(255, 255, 255, 0.1); /* Тень для 3D-эффекта */
+            background: linear-gradient(45deg, #fff, #ccc); /* Градиент для текста */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s; /* Задержка для текста */
+            color: #ccc; /* Серый текст */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1); /* Легкая тень */
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 60px; /* Увеличили ширину кнопки */
+            font-size: 1.2rem;
+            cursor: pointer;
+            background: #fff; /* Белый фон */
+            border: none;
+            color: #000; /* Черный текст */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, filter 0.2s ease;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+            transform-style: preserve-3d;
+        }
+
+        .button:hover {
+            background: #f0f0f0; /* Светло-серый фон при наведении */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
+        }
+
+        .button:active {
+            transform: translateY(8px) scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Стили для 3D-куба */
+        .cube-container {
+            perspective: 800px;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.6s, transform 1s ease 0.6s; /* Задержка для куба */
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.9); /* Непрозрачные грани */
+            border: 2px solid #000; /* Черные рамки */
+            box-sizing: border-box; /* Учитываем границы в размерах элемента */
+        }
+
+        .front  { transform: translateZ(50px); }
+        .back   { transform: rotateY(180deg) translateZ(50px); }
+        .right  { transform: rotateY(90deg) translateZ(50px); }
+        .left   { transform: rotateY(-90deg) translateZ(50px); }
+        .top    { transform: rotateX(90deg) translateZ(50px); }
+        .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+        @keyframes rotateCube {
+            from { transform: rotateY(0deg) rotateX(0deg); }
+            to   { transform: rotateY(360deg) rotateX(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Секция 1 -->
+    <div class="section">
+        <h1>Добро пожаловать!</h1>
+        <p>Это пример сайтов которые я делаю.</p>
+        <div class="cube-container">
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция 2 -->
+    <div class="section">
+        <h1>Интересный факт:</h1>
+        <p>Первый в мире веб-сайт был создан Тимом Бернерсом-Ли в 1991 году, и он до сих пор доступен по своему оригинальному адресу: [http://info.cern.ch](http://info.cern.ch). На этом сайте объяснялось, что такое Всемирная паутина (World Wide Web), как установить веб-сервер и как получить доступ к другим сайтам. Это был не только первый сайт, но и первый веб-сервер, который работал на компьютере NeXT в CERN (Европейская организация по ядерным исследованиям).</p>
+    </div>
+
+    <!-- Секция 3 -->
+    <div class="section">
+        <h1>Какие языки программирования используют для создания сайтов?</h1>
+        <p>Для создания сайтов чаще использут языки программирования такие как: **HTML**, **CSS** и **JavaScript** они отвечают за внешний вид, а **Python**, **PHP** или **Node.js** — за логику. Данные хранятся в базах, например **MySQL** или **MongoDB**. А **JavaScript** уникален: он работает и в браузере, и на сервере!</p>
+    </div>
+
+    <!-- Секция 4 -->
+    <div class="section">
+        <h1>"Кликомир"</h1>
+        <p>"Сайты — это не просто страницы в интернете, это целые миры, созданные из кода, дизайна и идей. Каждый клик — шаг в новую вселенную, где технологии и творчество становятся единым целым." </p>
+    </div>
+
+    <!-- Секция 5 с кнопкой -->
+    <div class="section">
+        <h1>Спасибо за внимание!</h1>
+        <p>Если вы хотите заказать свой сайт, то можете его купить нажав на кнопку ниже (авито).</p>
+        <button class="button" onmousemove="tiltButton(event)" onmouseleave="resetButton(event)" onclick="window.location.href='https://example.com'">Tap ✍(◔◡◔)</button>
+    </div>
+
+    <script>
+        // Функция для проверки видимости элемента
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= window.innerHeight / 2 && // Элемент выше центра экрана
+                rect.bottom >= window.innerHeight / 2 // Элемент ниже центра экрана
+            );
+        }
+
+        // Функция для анимации текста и куба при прокрутке
+        function animateOnScroll() {
+            const sections = document.querySelectorAll(".section");
+            sections.forEach((section) => {
+                const h1 = section.querySelector("h1");
+                const p = section.querySelector("p");
+                const cubeContainer = section.querySelector(".cube-container");
+
+                if (isElementInViewport(section)) {
+                    if (h1) h1.style.opacity = 1;
+                    if (h1) h1.style.transform = "translateY(0)";
+                    if (p) p.style.opacity = 1;
+                    if (p) p.style.transform = "translateY(0)";
+                    if (cubeContainer) cubeContainer.style.opacity = 1;
+                    if (cubeContainer) cubeContainer.style.transform = "translateY(0)";
+                } else {
+                    if (h1) h1.style.opacity = 0;
+                    if (h1) h1.style.transform = "translateY(20px)";
+                    if (p) p.style.opacity = 0;
+                    if (p) p.style.transform = "translateY(20px)";
+                    if (cubeContainer) cubeContainer.style.opacity = 0;
+                    if (cubeContainer) cubeContainer.style.transform = "translateY(20px)";
+                }
+            });
+        }
+
+        // Функция для наклона кнопки в сторону мыши
+        function tiltButton(event) {
+            const button = event.currentTarget;
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const mouseX = event.clientX - centerX;
+            const mouseY = event.clientY - centerY;
+
+            const maxTilt = 20; // Угол в градусах
+            const maxDepth = 10; // Максимальное смещение в пикселях
+
+            const tiltY = -(mouseX / (rect.width / 2)) * maxTilt;
+            const tiltX = (mouseY / (rect.height / 2)) * maxTilt;
+            const depth = Math.abs(mouseX / (rect.width / 2)) * maxDepth;
+
+            button.style.transform = `rotateY(${tiltY}deg) rotateX(${tiltX}deg) translateZ(${-depth}px)`;
+
+            const shadowX = (mouseX / (rect.width / 2)) * 10;
+            const shadowY = (mouseY / (rect.height / 2)) * 10;
+            button.style.filter = `drop-shadow(${shadowX}px ${shadowY}px 6px rgba(0, 0, 0, 0.5))`;
+        }
+
+        // Функция для сброса наклона кнопки
+        function resetButton(event) {
+            const button = event.currentTarget;
+            button.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
+            button.style.filter = 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))';
+        }
+
+        // Запускаем анимацию при загрузке страницы и при прокрутке
+        window.addEventListener("load", animateOnScroll);
+        window.addEventListener("scroll", animateOnScroll);
+    </script>
+</body>
+</html>
